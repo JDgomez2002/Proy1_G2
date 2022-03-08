@@ -1,3 +1,4 @@
+
 public interface iStack<E> {
     /**
      * Add an item to the stack. Will be popped next.
