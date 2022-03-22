@@ -25,10 +25,10 @@ class Vista{
 
     public String solicitar_lisp(){
         System.out.println();
-        System.out.print("Ingrese su expresion Lisp! R// ");
-        System.out.println();
+        System.out.print("Ingrese su expresion Lisp! // ");
         scanner = new Scanner(System.in);
         String s = scanner.nextLine();
+        System.out.println();
         return s;
     }
     
