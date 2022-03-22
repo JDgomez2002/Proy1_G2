@@ -8,6 +8,6 @@ public class MainG2{
 //VISTA
 ///////////////////////////////*/
 
-class Vista{
+// class Vista{
     
-}
+// }
