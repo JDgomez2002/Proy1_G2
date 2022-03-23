@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class MainG2{
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class MainG2{
         CalculadoraLisp c = new CalculadoraLisp(lisp);
         // c.separador();
         String[] expresionLisp = c.get_expresion();
-        ArrayList<String> expresion= new ArrayList<>();
+        Vector<String> expresion= new Vector<>();
 
         for(int k = 0; k<expresionLisp.length ;k++){
             
@@ -20,89 +21,114 @@ public class MainG2{
 
         }
 
-        int total=operar(expresion);
+        Double total=operar(expresion);
 
         System.out.println("El total es de "+total);
             
     }
 
-    public static int sum(ArrayList<String> ArrayNum){
-
-        int suma=0;
-
-        for(int i=0;i<ArrayNum.size();i++){
-
-            System.out.println(ArrayNum.get(i));
-            suma=suma+Integer.parseInt(ArrayNum.get(i));
-        }
-
-        return suma;
-    }
-
-    public static int operar(ArrayList<String> expresion){
-        int z=0;
+    public static Double operar(Vector<String> expresion){
+        Double z=0.0;
         boolean encontroSuma=false;
+        int Contador= 0;
+        ArrayList<Integer> operaciones=new ArrayList<>();
 
         for(int k = 0; k<expresion.size() ;k++){
 
 
-            //System.out.println(expresion.get(k));
+            if(expresion.get(k).equals("(")){
 
-            String x=expresion.get(k);
-            System.out.println("x es igual a "+x);
+                operaciones.add(k);
+                Contador++;
+                System.out.println("Operaciones en posicion "+k);
 
-            
-
-            if(x.equals("+")&&encontroSuma==false){
-                encontroSuma=true;
-                System.out.println("si encuentra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                boolean agregarSuma=false;
-                ArrayList<String> ArraySuma=new ArrayList<>();
-                ArrayList<String> ArrayNum=new ArrayList<>();
-
-                for(int j = k; j<expresion.size() ;j++){
-                    if(agregarSuma==true){
-                        ArraySuma.add(expresion.get(j));
-                    }
-                    if(expresion.get(j).equals("(")){
-                        agregarSuma=true;
-                        ArraySuma.add(expresion.get(j));
-                    }
-                    if(expresion.get(j).equals(")")){
-                        agregarSuma=false;
-                        ArraySuma.add(expresion.get(j));
-                        int t=operar(ArraySuma);
-                        String u=""+t;
-                        ArrayNum.add(u);
-
-                    }
-                    if(expresion.get(j).equals("0")||expresion.get(j).equals("1")||expresion.get(j).equals("2")||expresion.get(j).equals("3")||expresion.get(j).equals("4")||expresion.get(j).equals("5")||expresion.get(j).equals("6")||expresion.get(j).equals("7")||expresion.get(j).equals("8")||expresion.get(j).equals("9")){
-                        
-                        if(!agregarSuma){
-                            ArrayNum.add(expresion.get(j));
-                        }
-                        
-                        
-                    }
-                }
-                
-
-                z= sum(ArrayNum);
             }
+        
+        
+        
         }
+        try{
+            do{
+                int x=operaciones.get(operaciones.size()-1);
+                String x1=expresion.get(x+1);
+                
+                String y1=expresion.get(x+2);
+                String z1=expresion.get(x+3);
 
+                expresion.remove(x+4);
+                expresion.remove(x+3);
+                expresion.remove(x+2);
+                expresion.remove(x+1);
+                expresion.remove(x);
+
+                System.out.println(" el X1 es "+x1);
+                System.out.println(" el X1 es "+y1);
+                System.out.println(" el X1 es "+z1);
+
+                z = Operations(y1,z1,x1);
+
+                System.out.println("Operacion de prueba "+z);
+
+                expresion.remove(expresion.size()-1);
+                expresion.add(z+"");
+                expresion.add(")");
+                System.out.println("");
+
+                for(int k = 0; k<expresion.size() ;k++){
+                    
+                    System.out.print(expresion.get(k));
+
+                }
+
+                System.out.println("");
+
+                operaciones.remove(operaciones.size()-1);
+
+
+            }while(operaciones.size()>0);
+    }catch(Exception e){
+        System.out.println("Operaciones finalizadas");
+
+    }
 
 
         return z;
 
     }
 
+    public static Double Operations(String num1, String num2, String operando){
+        Double op=0.0;
+
+        if(operando.equals("+")){
+
+            op=Double.parseDouble(num1);
+            op=op+Double.parseDouble(num2);
+
+        }else if(operando.equals("-")){
+
+            op=Double.parseDouble(num2);
+            op=op-Double.parseDouble(num1);
+
+        }else if(operando.equals("*")){
+
+            op=Double.parseDouble(num1);
+            op=op*Double.parseDouble(num2);
+
+        }else if(operando.equals("/")){
+
+            op=Double.parseDouble(num2);
+            op=op/Double.parseDouble(num1);
+
+        }
 
 
 
+        return op;
+    }
+
+   
 
 
-    
 
 }
 
