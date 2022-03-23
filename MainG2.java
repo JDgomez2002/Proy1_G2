@@ -5,15 +5,18 @@ import java.util.Vector;
 
 public class MainG2{
     public static void main(String[] args) {
-        
+        // Creación de variables
         Vista v = new Vista();
         String lisp = v.solicitar_lisp();
 
         CalculadoraLisp c = new CalculadoraLisp(lisp);
         // c.separador();
+        
+        // Se inicializa variable y llama método de calculadora
         String[] expresionLisp = c.get_expresion();
         Vector<String> expresion= new Vector<>();
 
+        	// Si k es menor a la cantidad de expresiones seguir añadiendo las expresiones al array.
         for(int k = 0; k<expresionLisp.length ;k++){
             
             expresion.add(expresionLisp[k]);
@@ -21,6 +24,7 @@ public class MainG2{
 
         }
 
+        //Operamos la expresión y la añadimos al array
         Double total=CalculadoraLisp.operar(expresion);
 
         System.out.println("El total es de "+total);
@@ -32,6 +36,7 @@ public class MainG2{
 
 }
 
+//Clase donde se pide input de expresió lisp
 class Vista{
     Scanner scanner = new Scanner(System.in);
 

@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class CalculadoraLisp {
-    
+    //Creamos variables
     private String[] lispArray;
     private int contador;
     private ArrayList<StackLisp<String>> myPrincipal = new ArrayList<StackLisp<String>>();
 
-
+// Crea método donde se dividen los paréntesis y se operan las expresiones de adentro
     public CalculadoraLisp(String s){
         this.lispArray = expresion_reader(s);
         this.contador = 0;
@@ -40,6 +40,7 @@ public class CalculadoraLisp {
         return lispArray1;
     }
 
+    //Método que permitew que se navegue por el array y se manden al stack las expressiones para poder ser operadas
     public void separador(){
 
             if(lispArray[this.contador].equals("(")){
@@ -72,6 +73,7 @@ public class CalculadoraLisp {
         }
     }
 
+    //ArrayList que contiene expresiones
     public ArrayList<StackLisp<String>> exrpesion(){
         return this.myPrincipal;
     }
@@ -80,7 +82,7 @@ public class CalculadoraLisp {
         return this.lispArray;
     }
 
-    
+    // Se operan los números dentro de la expresión postfix
     public static Double operar(Vector<String> expresion){
         Double z=0.0;
         boolean encontroSuma=false;
