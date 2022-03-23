@@ -27,7 +27,7 @@ public class MainG2{
         //Operamos la expresión y la añadimos al array
         Double total=CalculadoraLisp.operar(expresion);
 
-        System.out.println("El total es de "+total);
+        v.dar_resultado(total);
             
     }
   
@@ -47,6 +47,12 @@ class Vista{
         String s = scanner.nextLine();
         System.out.println();
         return s;
+    }
+
+    public void dar_resultado(Double total){
+        System.out.println();
+        System.out.println("El total es de: "+total);
+        System.out.println();
     }
     
 }

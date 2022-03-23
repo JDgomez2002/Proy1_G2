@@ -118,8 +118,8 @@ public class CalculadoraLisp {
                 expresion.remove(x);
 
                 System.out.println(" el X1 es "+x1);
-                System.out.println(" el X1 es "+y1);
-                System.out.println(" el X1 es "+z1);
+                System.out.println(" el Y1 es "+y1);
+                System.out.println(" el Z1 es "+z1);
 
                 z = Operations(y1,z1,x1);
 
